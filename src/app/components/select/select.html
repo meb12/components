@@ -1,0 +1,18 @@
+<div class="container">
+  <button type="button" class="select-container" (click)="toggleOptions()">
+    <span [ngClass]="!selectedOption ? 'empty' : 'option-selected'">
+      {{ selectedOption?.label || placeholder }}
+    </span>
+
+    <mat-icon class="select-arrow" aria-hidden="true"> keyboard_arrow_down </mat-icon>
+  </button>
+  @if (options.length > 0 && isOpen) {
+    <ul class="options-container">
+      @for (option of options; track option.value) {
+        <li class="option" (click)="selectOption(option)">
+          {{ option.label }}
+        </li>
+      }
+    </ul>
+  }
+</div>

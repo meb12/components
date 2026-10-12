@@ -26,9 +26,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles/styles.scss"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "security": {
@@ -88,12 +86,13 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles/styles.scss"]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "f35a6ffb-dd6a-42df-99da-c5ff292e0d4e"
   }
 }

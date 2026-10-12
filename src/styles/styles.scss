@@ -1,0 +1,53 @@
+@use './tokens';
+@use './reset';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+:root {
+  --background: var(--color-neutral-light-05);
+  --background-disabled: var(--color-neutral-light-20);
+  --background-hover: var(--color-brand-01-lightest);
+  --border-style: solid;
+  --color: var(--color-neutral-dark-70);
+  --color-disabled: var(--color-action-disabled);
+  --color-error: var(--color-feedback-negative-base);
+  --color-focused: var(--color-action-default);
+  --color-hover: var(--color-action-hover);
+  --font-family: var(--font-family-text);
+  --font-size: var(--font-size-default);
+  --min-height: 2.75em;
+  --outline-color-focused: var(--color-action-focus);
+  --outline-offset: 2px;
+  --padding-horizontal: 0.5em;
+  --padding-vertical: 0.7em;
+  --text-color: var(--color-neutral-dark-90);
+  --text-color-empty: var(--color-neutral-light-30);
+}
+
+/* =========================
+   Estilos gerais
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family);
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-family);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}

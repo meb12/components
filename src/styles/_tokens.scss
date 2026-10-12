@@ -1,0 +1,30 @@
+:root {
+  /* Tipografia */
+  --font-family-text: 'Roboto', sans-serif;
+  --font-size-default: 1rem;
+  --font-weight-normal: 400;
+
+  /* Cores neutras */
+  --color-neutral-light-05: #fbfbfb;
+  --color-neutral-light-20: #dadedf;
+  --color-neutral-light-30: #b6bdbf;
+  --color-neutral-dark-70: #4a5c60;
+  --color-neutral-dark-90: #1d2426;
+
+  /* Cores de ação */
+  --color-action-default: #753399;
+  --color-action-hover: #5b1c7d;
+  --color-action-focus: #260538;
+  --color-action-disabled: #9da7a9;
+
+  /* Cor de marca */
+  --color-brand-01-lightest: #f2eaf6;
+
+  /* Feedback */
+  --color-feedback-negative-base: #be3e37;
+
+  /* Bordas */
+  --border-width-sm: 1px;
+  --border-width-lg: 4px;
+  --border-radius-md: 4px;
+}

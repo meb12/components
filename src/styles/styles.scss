@@ -8,10 +8,16 @@
   --background-hover: var(--color-brand-01-lightest);
   --border-style: solid;
   --color: var(--color-neutral-dark-70);
-  --color-disabled: var(--color-action-disabled);
+  --color-checked: var(--color-action-default);
+  --color-checked-disabled: var(--color-action-disabled);
+  --color-checked-hover: var(--color-action-hover);
+  --color-disabled: var(--color-neutral-light-30);
   --color-error: var(--color-feedback-negative-base);
   --color-focused: var(--color-action-default);
   --color-hover: var(--color-action-hover);
+  --color-unchecked: var(--color-neutral-light-00);
+  --color-unchecked-disabled: var(--color-neutral-light-20);
+  --color-unchecked-hover: var(--color-brand-01-lightest);
   --font-family: var(--font-family-text);
   --font-size: var(--font-size-default);
   --min-height: 2.75em;
@@ -21,6 +27,8 @@
   --padding-vertical: 0.7em;
   --text-color: var(--color-neutral-dark-90);
   --text-color-empty: var(--color-neutral-light-30);
+  --track-checked: var(--color-brand-01-light);
+  --track-unchecked: var(--color-neutral-light-20);
 }
 
 /* =========================

@@ -1,0 +1,18 @@
+<label class="container">
+  <input
+    type="checkbox"
+    (change)="toggle()"
+    [checked]="isChecked"
+    [disabled]="isDisabled"
+    [attr.aria-checked]="isChecked"
+    [attr.aria-label]="label"
+    (keydown.space)="$event.preventDefault(); toggle()"
+  />
+  <span class="track">
+    <div class="key">
+      @if (showIcon) {
+        <mat-icon>check</mat-icon>
+      }
+    </div>
+  </span>
+</label>

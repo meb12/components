@@ -1,0 +1,127 @@
+.container {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.container input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.track {
+  //customizado
+  background-color: var(--track-unchecked);
+  //padrao
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  transition: background-color 0.3s;
+}
+
+.key {
+  //padrao
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  border-width: var(--border-width-sm);
+  border-radius: 100%;
+  border-style: solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  transition:
+    left 0.4s ease-in-out,
+    transform 0.4s ease-in-out,
+    background-color 0.3s ease;
+}
+
+.key mat-icon {
+  color: white;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+}
+
+.container input:checked + .track {
+  //customizado
+  background-color: var(--track-checked);
+}
+
+.container input:checked + .track .key {
+  //customizado
+  background-color: var(--color-checked);
+  border-color: transparent;
+  //padrao
+  left: calc(100% - 1.5rem);
+  transform: translateY(-50%);
+}
+
+.container input:not(:checked) + .track .key {
+  //customizado
+  background-color: var(--color-unchecked);
+  border-color: var(--border-color);
+}
+
+.container input:not(:checked):hover + .track .key {
+  /* customizado */
+  background-color: var(--color-unchecked-hover);
+  /* padrão */
+  border-color: var(--color-checked-hover);
+  cursor: pointer;
+}
+
+.container input:checked:hover + .track .key {
+  /* customizado */
+  background-color: var(--color-checked-hover);
+  /* padrão */
+  cursor: pointer;
+}
+.container input:focus-visible + .track {
+  //customizado
+  outline-color: var(--outline-color-focused);
+  //padrao
+  outline-width: var(--border-width-lg);
+  outline-style: solid;
+  outline-offset: 2px;
+}
+
+.container input:disabled + .track {
+  //padrao
+  cursor: not-allowed;
+}
+
+.container input:checked:disabled + .track {
+  //padrao
+  background-color: var(--track-unchecked);
+  border-color: transparent;
+  cursor: not-allowed;
+}
+
+.container input:not(:checked):disabled + .track .key {
+  //customizado
+  background-color: var(--color-unchecked-disabled);
+  border-color: var(--color-checked-disabled);
+  cursor: not-allowed;
+}
+
+.container input:checked:disabled + .track .key {
+  //customizado
+  background-color: var(--color-checked-disabled);
+  border-color: transparent;
+  //padrao
+  cursor: not-allowed;
+}
+
+.container input:checked:disabled + .track .key mat-icon {
+  //customizado
+  color: var(--color-unchecked-disabled);
+}

@@ -19,19 +19,17 @@ import { MatIconModule } from '@angular/material/icon';
   ],
 })
 export class Select implements ControlValueAccessor {
-  @Input() label = '';
+  @Input() id = 'select-id';
   @Input() placeholder = '';
   @Input() options: Options[] = [];
-  @Input() disabled = false;
-  isOpen = false;
+  @Input() hasError = false;
+  @Input() label = 'Selecione uma opção';
+
   value: string | null = null;
+  disabled = false;
 
   private onChange: (value: string | null) => void = () => {};
   private onTouched: () => void = () => {};
-
-  get selectedOption(): Options | undefined {
-    return this.options.find((option) => option.value === this.value);
-  }
 
   writeValue(value: string | null): void {
     this.value = value;
@@ -49,24 +47,16 @@ export class Select implements ControlValueAccessor {
     this.disabled = isDisabled;
   }
 
-  updateValue(value: string): void {
-    if (this.disabled) return;
+  onBlur(): void {
+    this.onTouched();
+  }
+
+  updateValue(event: Event): void {
+    const select = event.target as HTMLSelectElement;
+    const value = select.value || null;
 
     this.value = value;
     this.onChange(value);
     this.onTouched();
-  }
-
-  toggleOptions(): void {
-    this.isOpen = !this.isOpen;
-  }
-
-  selectOption(option: Options): void {
-    if (option.disabled) return;
-
-    this.value = option.value;
-    this.onChange(this.value);
-    this.onTouched();
-    this.isOpen = false;
   }
 }

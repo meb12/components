@@ -1,26 +1,27 @@
 .container {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   width: 100%;
 }
+
 .select-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; //customizados
-  font-family: var(--font-family-text);
+  //customizado
   font-size: var(--font-size);
   border-color: var(--color);
   background-color: var(--background);
-  padding: 11px 0.5em;
+  padding: var(--padding-vertical) var(--padding-horizontal);
   //padrão
+  font-family: var(--font-family-text);
   font-weight: var(--font-weight-normal);
   border-width: var(--border-width-sm);
   border-radius: var(--border-radius-md);
   border-style: solid;
   min-height: 2.75em;
+  appearance: none;
+  width: 100%;
+  padding-right: 2.5em;
 
   &:hover {
-    //customizados
+    //customizado
     border-color: var(--color-hover);
     background-color: var(--background-hover);
     //padrao
@@ -34,20 +35,56 @@
     outline-style: solid;
     outline-offset: 2px;
   }
+
+  &:disabled {
+    //customizado
+    border-color: var(--color-disabled);
+    background-color: var(--background-disabled);
+    //padrao
+    color: var(--text-color);
+    cursor: not-allowed;
+  }
+
+  &.has-error {
+    border-color: var(--color-error);
+    background-color: var(--background);
+  }
+
+  //cor do ícone
+  &:hover + .select-icon {
+    color: var(--color-hover);
+  }
+
+  &:focus + .select-icon {
+    color: var(--color-focused);
+  }
+
+  &:disabled + .select-icon {
+    color: var(--color-disabled);
+  }
+
+  &.has-error + .select-icon {
+    color: var(--color-error);
+  }
 }
 
-.select-arrow {
-  flex: none;
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
-  line-height: 24px;
+.option-empty,
+.option-disabled {
+  color: var(--text-color-empty) !important;
 }
 
-.empty {
-  color: var(--text-color-empty);
-}
-
-.option-selected {
+.option-text {
   color: var(--text-color);
+}
+
+.select-icon {
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-color);
+  font-size: 1.5em;
+  width: 1em;
+  height: 1em;
 }

@@ -1,3 +1,272 @@
-<div class="teste">
-  <app-select placeholder="Choose an option" [options]="options"></app-select>
-</div>
+<main class="page">
+  <header class="page-header">
+    <h1>Componentes personalizados</h1>
+  </header>
+
+  <!-- SELECT -->
+  <section class="preview-card">
+    <h2>Pré-visualização do Select</h2>
+
+    <form [formGroup]="form">
+      <app-select
+        id="select-option"
+        formControlName="selectedOption"
+        [options]="options"
+        placeholder="Selecione uma opção"
+        [hasError]="form.controls.selectedOption.invalid && form.controls.selectedOption.touched"
+        [style.--font-size]="fontSize + 'px'"
+        [style.--padding-horizontal]="paddingHorizontal + 'px'"
+        [style.--padding-vertical]="paddingVertical + 'px'"
+        [style.--background]="backgroundColor"
+        [style.--color]="borderColor"
+        [style.--color-hover]="borderHoverColor"
+        [style.--background-hover]="backgroundHoverColor"
+        [style.--text-color]="textColor"
+      ></app-select>
+    </form>
+  </section>
+
+  <!-- PERSONALIZAÇÕES DO SELECT -->
+  <section class="customization-card">
+    <div class="section-heading">
+      <h2>Personalizações do Select</h2>
+
+      <button class="reset-button" type="button" (click)="resetSelectCustomization()">
+        Restaurar padrão
+      </button>
+    </div>
+
+    <div class="settings-grid">
+      <label class="setting checkbox-setting">
+        <input
+          type="checkbox"
+          [checked]="form.controls.selectedOption.disabled"
+          (change)="setSelectDisabled($event)"
+        />
+        <span class="setting-label">Desabilitar Select</span>
+      </label>
+
+      <div class="setting">
+        <span class="setting-label">Tamanho da fonte</span>
+
+        <div class="stepper">
+          <button
+            type="button"
+            aria-label="Diminuir tamanho da fonte"
+            [disabled]="fontSize <= 10"
+            (click)="changeFontSize(-1)"
+          >
+            −
+          </button>
+
+          <span class="stepper-value">{{ fontSize }} px</span>
+
+          <button
+            type="button"
+            aria-label="Aumentar tamanho da fonte"
+            [disabled]="fontSize >= 32"
+            (click)="changeFontSize(1)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <div class="setting">
+        <span class="setting-label">Padding horizontal</span>
+
+        <div class="stepper">
+          <button
+            type="button"
+            aria-label="Diminuir padding horizontal"
+            [disabled]="paddingHorizontal <= 0"
+            (click)="changePadding('horizontal', -2)"
+          >
+            −
+          </button>
+
+          <span class="stepper-value"> {{ paddingHorizontal }} px </span>
+
+          <button
+            type="button"
+            aria-label="Aumentar padding horizontal"
+            [disabled]="paddingHorizontal >= 40"
+            (click)="changePadding('horizontal', 2)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <div class="setting">
+        <span class="setting-label">Padding vertical</span>
+
+        <div class="stepper">
+          <button
+            type="button"
+            aria-label="Diminuir padding vertical"
+            [disabled]="paddingVertical <= 0"
+            (click)="changePadding('vertical', -2)"
+          >
+            −
+          </button>
+
+          <span class="stepper-value"> {{ paddingVertical }} px </span>
+
+          <button
+            type="button"
+            aria-label="Aumentar padding vertical"
+            [disabled]="paddingVertical >= 40"
+            (click)="changePadding('vertical', 2)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <label class="setting color-setting">
+        <span class="setting-label">Cor da borda padrão</span>
+        <span class="color-control">
+          <input type="color" [(ngModel)]="borderColor" [ngModelOptions]="{ standalone: true }" />
+          <span>{{ borderColor }}</span>
+        </span>
+      </label>
+
+      <label class="setting color-setting">
+        <span class="setting-label">Cor da borda no hover</span>
+        <span class="color-control">
+          <input
+            type="color"
+            [(ngModel)]="borderHoverColor"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span>{{ borderHoverColor }}</span>
+        </span>
+      </label>
+
+      <label class="setting color-setting">
+        <span class="setting-label">Background padrão</span>
+        <span class="color-control">
+          <input
+            type="color"
+            [(ngModel)]="backgroundColor"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span>{{ backgroundColor }}</span>
+        </span>
+      </label>
+
+      <label class="setting color-setting">
+        <span class="setting-label">Background no hover</span>
+        <span class="color-control">
+          <input
+            type="color"
+            [(ngModel)]="backgroundHoverColor"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span>{{ backgroundHoverColor }}</span>
+        </span>
+      </label>
+
+      <label class="setting color-setting">
+        <span class="setting-label">Cor do texto</span>
+        <span class="color-control">
+          <input type="color" [(ngModel)]="textColor" [ngModelOptions]="{ standalone: true }" />
+          <span>{{ textColor }}</span>
+        </span>
+      </label>
+    </div>
+  </section>
+
+  <!-- SWITCH -->
+  <section class="preview-card">
+    <h2>Pré-visualização do Switch</h2>
+
+    <form [formGroup]="form">
+      <div class="switch-preview">
+        <app-switch
+          id="switch-option"
+          formControlName="switchValue"
+          [style.--color-checked]="switchPrimaryColor"
+          [style.--track-checked]="switchTrackActiveColor"
+          [style.--track-unchecked]="switchTrackInactiveColor"
+          [style.--border-color]="switchBorderColor"
+        ></app-switch>
+      </div>
+    </form>
+  </section>
+
+  <!-- PERSONALIZAÇÕES DO SWITCH -->
+  <section class="customization-card">
+    <div class="section-heading">
+      <h2>Personalizações do Switch</h2>
+
+      <button class="reset-button" type="button" (click)="resetSwitchCustomization()">
+        Restaurar padrão
+      </button>
+    </div>
+
+    <div class="settings-grid">
+      <label class="setting checkbox-setting">
+        <input
+          type="checkbox"
+          [checked]="form.controls.switchValue.disabled"
+          (change)="setSwitchDisabled($event); resetSwitchCustomization()"
+        />
+        <span class="setting-label">Desabilitar Switch</span>
+      </label>
+
+      <label class="setting color-setting">
+        <span class="setting-label">Cor principal</span>
+
+        <span class="color-control">
+          <input
+            type="color"
+            [(ngModel)]="switchPrimaryColor"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span>{{ switchPrimaryColor }}</span>
+        </span>
+      </label>
+
+      <label class="setting color-setting">
+        <span class="setting-label">Cor do track ativado</span>
+
+        <span class="color-control">
+          <input
+            type="color"
+            [(ngModel)]="switchTrackActiveColor"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span>{{ switchTrackActiveColor }}</span>
+        </span>
+      </label>
+
+      <label class="setting color-setting">
+        <span class="setting-label">Cor do track desativado</span>
+
+        <span class="color-control">
+          <input
+            type="color"
+            [(ngModel)]="switchTrackInactiveColor"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span>{{ switchTrackInactiveColor }}</span>
+        </span>
+      </label>
+
+      <label class="setting color-setting">
+        <span class="setting-label">Cor da borda</span>
+
+        <span class="color-control">
+          <input
+            type="color"
+            [(ngModel)]="switchBorderColor"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <span>{{ switchBorderColor }}</span>
+        </span>
+      </label>
+    </div>
+  </section>
+</main>
